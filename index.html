@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EntreCuidar - Portal do Cliente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+    <!-- LOADING SCREEN -->
+    <div id="loader-wrapper">
+        <img src="EntreCuidar_Manualdemarca_v1.pdf.gif" alt="Carregando..." class="loader-logo">
+    </div>
+
+    <!-- ENTRY WRAPPER OMITTED (REMOVIDO 2026) -->
+    <!-- TELA DE INTRODUÇÃO / MISSÃO -->
+    <main class="intro-wrapper" id="intro-view">
+        <div class="intro-content">
+            <div class="intro-left">
+                <div class="badge">
+                    <i class="ri-checkbox-circle-fill"></i> NOSSA VISÃO
+                </div>
+                <h2>TRANSFORMANDO O CUIDADO NEURODIVERGENTE COM INTELIGÊNCIA</h2>
+                <div class="divider"></div>
+                <p>Somos pioneiros em reestruturar as operações clínicas para o autismo e neurodiversidade. Entregamos
+                    tecnologia corporativa, auditoria guiada e alta previsibilidade para as principais operadoras de
+                    saúde do país.</p>
+            </div>
+
+            <div class="intro-right">
+                <h3>O que é o <span>EntreCuidar?</span></h3>
+                <p class="desc">A nossa atuação estratégica garante que o paciente receba o melhor tratamento integrado,
+                    enquanto a operadora de saúde tem garantia do controle de recursos através de <strong>três pilares
+                        tecnológicos fundamentais:</strong></p>
+
+                <div class="pillars">
+                    <div class="pillar">
+                        <div class="icon-box"><i class="ri-shield-check-fill"></i></div>
+                        <div>
+                            <h4>Qualidade Técnica</h4>
+                            <p>Estruturação de serviços baseados em evidências científicas e auditorias contínuas.</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="icon-box"><i class="ri-line-chart-line"></i></div>
+                        <div>
+                            <h4>Previsibilidade</h4>
+                            <p>Controle de altas, evolução clínica e gestão eficiente do tempo de tratamento.</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <div class="icon-box"><i class="ri-funds-box-line"></i></div>
+                        <div>
+                            <h4>Redução de Custos</h4>
+                            <p>Meta de redução de 15% a 30% dos custos anuais com a demanda do neurodesenvolvimento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary mt-3" id="btn-start-portal">Acessar o Portal <i
+                        class="ri-arrow-right-line"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- TELA DE AUTENTICAÇÃO (LOGIN / REGISTRO) - Oculta inicialmente -->
+    <main class="auth-wrapper glass-container hidden" id="auth-view">
+        <header class="auth-header">
+            <img src="EntreCuidar_Manualdemarca_v1.pdf.gif" alt="EntreCuidar Logo" class="logo">
+        </header>
+
+        <div class="auth-container">
+            <!-- Tela de Login -->
+            <div class="auth-box active" id="login-box">
+                <h2>Acesso ao Portal</h2>
+                <p>Faça login para criar ou acompanhar suas solicitações.</p>
+
+                <form id="login-form">
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" placeholder="Seu e-mail" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" placeholder="Sua senha" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary w-100 mt-2">Entrar</button>
+                    <p class="auth-switch">Primeira vez aqui? <a href="#" id="btn-show-register">Crie sua conta</a></p>
+                </form>
+            </div>
+
+            <!-- Tela de Cadastro -->
+            <div class="auth-box" id="register-box">
+                <h2>Criar Conta</h2>
+                <p>Cadastre-se para acessar nossas soluções.</p>
+
+                <form id="register-form">
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="ri-user-line"></i>
+                            <input type="text" placeholder="Seu nome completo" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" placeholder="Seu e-mail" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="ri-lock-2-line"></i>
+                            <input type="password" placeholder="Crie uma senha" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary w-100 mt-2">Cadastrar</button>
+                    <p class="auth-switch">Já tem uma conta? <a href="#" id="btn-show-login">Faça login</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FORMULÁRIO PRINCIPAL (Oculto inicialmente) -->
+    <main class="form-wrapper glass-container hidden" id="form-view">
+        <header class="form-header">
+            <div class="header-top">
+                <img src="EntreCuidar_Manualdemarca_v1.pdf.gif" alt="EntreCuidar Logo" class="logo">
+                <button class="btn-logout" id="btn-logout" title="Sair"><i class="ri-logout-box-r-line"></i></button>
+            </div>
+            <h2>Nova Solicitação de Serviço</h2>
+            <p>Preencha os dados abaixo para darmos o primeiro passo na evolução do seu negócio.</p>
+            <div class="neon-divider"></div>
+        </header>
+
+        <div class="step-indicator">
+            <div class="step active" data-step="1">1</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">2</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">3</div>
+        </div>
+
+        <form id="multi-step-form">
+            <!-- STEP 1: Escolha do Produto -->
+            <div class="form-step active" id="step-1">
+                <h3>1. Qual solução você busca?</h3>
+                <p class="subtitle">Selecione o produto que melhor se encaixa no momento da sua empresa.</p>
+
+                <div class="product-cards">
+                    <label class="product-card">
+                        <input type="radio" name="produto" value="essencial" required>
+                        <div class="card-content">
+                            <div class="icon-wrapper">
+                                <i class="ri-search-eye-line"></i>
+                            </div>
+                            <h4>Produto Essencial</h4>
+                            <strong>DIAGNÓSTICO</strong>
+                            <p>Análise profunda para entender o cenário atual e identificar oportunidades de melhoria.
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="product-card">
+                        <input type="radio" name="produto" value="integral">
+                        <div class="card-content">
+                            <div class="icon-wrapper">
+                                <i class="ri-tools-line"></i>
+                            </div>
+                            <h4>Produto Integral</h4>
+                            <strong>COMO FAZER</strong>
+                            <p>Entrega do passo a passo da implementação, com ferramentas, processos e acompanhamento.
+                            </p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="btn-group align-right">
+                    <button type="button" class="btn-primary btn-next">Avançar <i
+                            class="ri-arrow-right-line"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Dados da Empresa -->
+            <div class="form-step" id="step-2">
+                <h3>2. Dados de Contato principal</h3>
+                <p class="subtitle">Precisamos das suas informações básicas para retornar o contato.</p>
+
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="empresa_nome">Nome da Empresa</label>
+                        <div class="input-icon">
+                            <i class="ri-building-4-line"></i>
+                            <input type="text" id="empresa_nome" name="empresa_nome"
+                                placeholder="Digite o nome da empresa">
+                        </div>
+                        <span class="error-msg">Campo obrigatório</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="contato_nome">Nome do Contato</label>
+                        <div class="input-icon">
+                            <i class="ri-user-line"></i>
+                            <input type="text" id="contato_nome" name="contato_nome" placeholder="Seu nome completo">
+                        </div>
+                        <span class="error-msg">Campo obrigatório</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">E-mail Corporativo</label>
+                        <div class="input-icon">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" id="email" name="email" placeholder="contato@empresa.com">
+                        </div>
+                        <span class="error-msg">E-mail inválido</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="telefone">WhatsApp</label>
+                        <div class="input-icon">
+                            <i class="ri-whatsapp-line"></i>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                        </div>
+                        <span class="error-msg">Campo obrigatório</span>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn-secondary btn-prev"><i class="ri-arrow-left-line"></i>
+                        Voltar</button>
+                    <button type="button" class="btn-primary btn-next">Avançar <i
+                            class="ri-arrow-right-line"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Detalhes do Projeto (Dinâmico) -->
+            <div class="form-step" id="step-3">
+                <h3>3. Detalhes da Solicitação</h3>
+                <p class="subtitle">Conte-nos um pouco mais sobre o seu momento atual.</p>
+
+                <!-- Campos Produto Essencial -->
+                <div id="campos-essencial" class="dynamic-fields">
+                    <div class="input-group full-width">
+                        <label for="desafio">Qual é o maior desafio ou problema atual que a empresa enfrenta?</label>
+                        <textarea id="desafio" name="desafio" rows="5"
+                            placeholder="Descreva brevemente a situação..."></textarea>
+                        <span class="error-msg">Campo obrigatório</span>
+                    </div>
+                </div>
+
+                <!-- Campos Produto Integral -->
+                <div id="campos-integral" class="dynamic-fields" style="display: none;">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="area">Área a ser estruturada</label>
+                            <div class="select-wrapper">
+                                <select id="area" name="area">
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="rh">Recursos Humanos / DP</option>
+                                    <option value="financeiro">Financeiro / Administrativo</option>
+                                    <option value="vendas">Comercial / Vendas</option>
+                                    <option value="operacoes">Operações / Logística</option>
+                                    <option value="outra">Outra</option>
+                                </select>
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="prazo">Prazo para início</label>
+                            <div class="select-wrapper">
+                                <select id="prazo" name="prazo">
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="urgente">Imediato (Urgente)</option>
+                                    <option value="curto">1 a 2 meses</option>
+                                    <option value="medio">3 a 6 meses</option>
+                                    <option value="planejamento">Apenas planejamento</option>
+                                </select>
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width mt-3">
+                        <label for="detalhes">Descreva os detalhes do processo ou área que deseja implementar:</label>
+                        <textarea id="detalhes" name="detalhes" rows="4"
+                            placeholder="Expectativas, metas, ferramentas atuais, etc..."></textarea>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn-secondary btn-prev"><i class="ri-arrow-left-line"></i>
+                        Voltar</button>
+                    <button type="submit" class="btn-primary" id="btn-submit">Finalizar e Enviar <i
+                            class="ri-check-line"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Success Message -->
+            <div class="form-step success-step" id="step-4">
+                <div class="success-icon">
+                    <i class="ri-checkbox-circle-fill"></i>
+                </div>
+                <h3>Solicitação Enviada!</h3>
+                <p>Nossa equipe recebeu seus dados e entrará em contato em breve para apresentar a proposta ideal para
+                    você.</p>
+                <div class="btn-group align-center">
+                    <button type="button" class="btn-primary" onclick="location.reload()">Nova Solicitação</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
