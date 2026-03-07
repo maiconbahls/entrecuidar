@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- AUTHENTICATION LOGIC ----
     const loginBox = document.getElementById('login-box');
     const registerBox = document.getElementById('register-box');
+    const codeBox = document.getElementById('code-box');
 
     const btnShowRegister = document.getElementById('btn-show-register');
     const btnShowLogin = document.getElementById('btn-show-login');
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
+    const codeForm = document.getElementById('code-form');
 
     // Switch between Login and Register
     btnShowRegister.addEventListener('click', (e) => {
@@ -62,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = false;
             loginForm.reset();
 
-            // Hide Auth, Show Form
-            authView.classList.add('hidden');
-            formView.classList.remove('hidden');
+            // Hide Login, Show Code Input
+            loginBox.classList.remove('active');
+            codeBox.classList.add('active');
         }, 1000);
     });
 
@@ -83,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = false;
             registerForm.reset();
 
-            // Hide Auth, Show Form
-            authView.classList.add('hidden');
-            formView.classList.remove('hidden');
+            // Hide Register, Show Code Input
+            registerBox.classList.remove('active');
+            codeBox.classList.add('active');
         }, 1000);
     });
 
@@ -93,10 +95,50 @@ document.addEventListener('DOMContentLoaded', () => {
     btnLogout.addEventListener('click', () => {
         formView.classList.add('hidden');
         authView.classList.remove('hidden');
+        codeBox.classList.remove('active');
+        loginBox.classList.add('active');
         // Reset the main form steps
         currentStep = 0;
         updateFormSteps();
         document.getElementById('multi-step-form').reset();
+    });
+
+    // Handle Access Code Submit
+    codeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const codeInput = document.getElementById('access-code').value.trim();
+        const codeError = document.getElementById('code-error');
+        const submitBtn = codeForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        codeError.style.display = 'none';
+
+        if (codeInput === '001' || codeInput === '002') {
+            submitBtn.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Validando...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+
+                // Set the correct product based on code
+                let radioValue = codeInput === '001' ? 'essencial' : 'integral';
+                let radioToSelect = document.querySelector(`input[name="produto"][value="${radioValue}"]`);
+                if (radioToSelect) {
+                    radioToSelect.checked = true;
+                    // trigger change event to toggle form fields correctly
+                    radioToSelect.dispatchEvent(new Event('change'));
+                }
+
+                formView.classList.remove('hidden');
+                authView.classList.add('hidden');
+                // Skip the first selection step directly to Step 2
+                currentStep = 1;
+                updateFormSteps();
+            }, 800);
+        } else {
+            codeError.style.display = 'block';
+        }
     });
 
 
