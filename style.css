@@ -1040,12 +1040,16 @@ button {
     .intro-wrapper {
         padding: 4rem 2rem;
         position: absolute;
-        /* fallback */
+        height: auto;
+        min-height: 100vh;
+        align-items: flex-start;
+        overflow-y: auto;
     }
 
     .intro-content {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+        margin-top: 2rem;
     }
 
     .intro-left {
